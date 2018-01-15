@@ -1,0 +1,28 @@
+{
+  "name": "habitat",
+  "version": "0.0.1",
+  "description": "A small package for managing env variables",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build:package": "./node_modules/.bin/babel --presets es2015 -d lib/ src/",
+    "prepublish": "npm run build:package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/herman-rogers/node-habitat.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Boomer Rogers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/herman-rogers/node-habitat/issues"
+  },
+  "homepage": "https://github.com/herman-rogers/node-habitat#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
