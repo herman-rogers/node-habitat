@@ -53,5 +53,9 @@ export function setupEnvironment(config) {
   }
 }
 
-// const loadedEnv = getJsonConfig();
-// setupEnvironment(loadedEnv);
+const habitat = () => {
+  const loadedEnv = getJsonConfig();
+  setupEnvironment(loadedEnv);
+};
+
+export default habitat;
