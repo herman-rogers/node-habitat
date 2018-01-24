@@ -1,5 +1,5 @@
 {
-  "name": "face_mcgace",
+  "name": "node-habitat",
   "version": "0.0.1",
   "description": "A small package for managing env variables",
   "main": "index.js",

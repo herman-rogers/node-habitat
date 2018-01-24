@@ -51,11 +51,11 @@ export function setupEnvironment(config) {
     default:
       global.habitat = {};
   }
+  global.habitat.env = config.env;
 }
 
-const habitat = () => {
+export function create() {
   const loadedEnv = getJsonConfig();
   setupEnvironment(loadedEnv);
-};
+}
 
-export default habitat;

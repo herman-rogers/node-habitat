@@ -1,3 +1,3 @@
-import habitat from './habitatEnv/habitat';
+import { create } from './habitatEnv/habitat';
 
-module.exports.habitat = habitat;
+module.exports.create = create;

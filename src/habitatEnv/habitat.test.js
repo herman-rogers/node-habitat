@@ -18,6 +18,11 @@ describe('habitat', () => {
     expect(global.habitat.TEST_API).toEqual('www.example.com');
   });
 
+  it('should place the env specification into the global namespace', () => {
+    habitat.setupEnvironment(habitat.getJsonConfig());
+    expect(global.habitat.env).toEqual('development');
+  });
+
   it('should place dev env variables into the global habitat env', () => {
     habitat.getJsonConfig = jest.fn();
 
