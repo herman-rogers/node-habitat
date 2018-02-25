@@ -68,6 +68,27 @@ console.log(apiURL); // prints out www.api.dev.com
 
 Finally, you can access the current env by ```global.habitat.env```.
 
+### Publishing Package
+
+To publish new versions of habitat first add you newest changes and increment the verison number inside of package.json.
+
+Once that is done, commit your changes to git and create a new tag. For example:
+
+```
+git add new_file.txt && git commit -m "Add new file"
+git tag 1.0.0
+git push origin 1.0.0
+git push origin master
+```
+
+After the tag is added to git you need to publish the package to npm by running
+
+```
+npm publish
+```
+
+This will automatically create a new build of the code and push directly to the npm package repository.
+
 ### Best Practices
 
 As with any project it is ultimately up to the developer to decide what to do with their config files. With that being said, with habitat there are some best practices that will help keep your config safe.
