@@ -15,12 +15,14 @@ export function traversePath(path) {
   return envFile[0];
 }
 
-export function getJsonConfig() {
-  const splitDir = __dirname.split('/');
+export function getJSONConfig() {
+  const isWindows = process.platform === 'win32';
+  const lineEndings = isWindows ? '\\' : '/';
+  const splitDir = __dirname.split(lineEndings);
   let file = null;
 
   for (let i = splitDir.length - 1; i > 0; i -= 1) {
-    const path = splitDir.join('/');
+    const path = splitDir.join(lineEndings);
     file = traversePath(path);
 
     if (file != null) break;
@@ -55,7 +57,7 @@ export function setupEnvironment(config) {
 }
 
 export function create() {
-  const loadedEnv = getJsonConfig();
+  const loadedEnv = getJSONConfig();
   setupEnvironment(loadedEnv);
 }
 
