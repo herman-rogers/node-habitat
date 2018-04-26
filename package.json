@@ -1,6 +1,6 @@
 {
   "name": "node-habitat",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "A small package for managing env variables",
   "main": "index.js",
   "scripts": {
