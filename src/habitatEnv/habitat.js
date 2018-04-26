@@ -1,4 +1,11 @@
-const fs = require('fs');
+let fs = Object.create(null);
+try {
+  // eslint-disable-next-line global-require
+  fs = require('fs');
+} catch (e) {
+  // eslint-disable-next-line no-console
+  console.log('could not detect fs, running outside node env.');
+}
 
 const fileName = '.env.json';
 
@@ -15,10 +22,12 @@ export function traversePath(path) {
   return envFile[0];
 }
 
-export function getJSONConfig() {
+export function getJSONConfig(directory) {
   const isWindows = process.platform === 'win32';
   const lineEndings = isWindows ? '\\' : '/';
-  const splitDir = __dirname.split(lineEndings);
+  const searchDir = directory || __dirname;
+  const splitDir = searchDir.split(lineEndings);
+
   let file = null;
 
   for (let i = splitDir.length - 1; i > 0; i -= 1) {
@@ -56,8 +65,13 @@ export function setupEnvironment(config) {
   global.habitat.env = config.env;
 }
 
-export function create() {
-  const loadedEnv = getJSONConfig();
+export function create(config) {
+  if (!config && !fs) {
+    // eslint-disable-next-line no-console
+    console.warning('Detected non-nodejs env, please pass in .env.json manually');
+    return;
+  }
+  const loadedEnv = config || getJSONConfig();
   setupEnvironment(loadedEnv);
 }
 
